@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/WSAndroid/BDDv3/app/src/main/res/layout/activity_amigos.xml" value="0.1" />
+        <entry key="..\:/WSAndroid/BDDv3/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/WSAndroid/BDDv3/app/src/main/res/layout/content_amigos.xml" value="0.2212962962962963" />
+        <entry key="..\:/WSAndroid/BDDv3/app/src/main/res/layout/content_main.xml" value="0.3138888888888889" />
+        <entry key="..\:/WSAndroid/BDDv3/app/src/main/res/layout/dialogonewamigo.xml" value="0.25416666666666665" />
+        <entry key="..\:/WSAndroid/BDDv3/app/src/main/res/layout/row.xml" value="0.36666666666666664" />
+        <entry key="..\:/WSAndroid/BDDv3/app/src/main/res/layout/rowamigos.xml" value="0.1" />
+        <entry key="..\:/WSAndroid/BDDv3/app/src/main/res/menu/menu_main.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

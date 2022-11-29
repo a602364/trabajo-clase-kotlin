@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="net.azarquiel.listacompra.MainActivity">
+    <item
+        android:id="@+id/itemInfo"
+        android:title="Acerca de" />
+    <item
+        android:id="@+id/itemEliminar"
+        android:enabled="true"
+        android:icon="@drawable/basura"
+        android:title="Eliminar"
+        app:showAsAction="always" />
+</menu>
