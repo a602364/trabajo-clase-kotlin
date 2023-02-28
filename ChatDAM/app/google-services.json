@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "985842899516",
+    "project_id": "chatdam-4f8c1",
+    "storage_bucket": "chatdam-4f8c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985842899516:android:bff727038bc9ea6c178139",
+        "android_client_info": {
+          "package_name": "net.azarquiel.chatdam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985842899516-6mumsrsfveg11arrboit38ppjjk947or.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxyGLbr6022xIRYr1Rkq8C_ueavaJISm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985842899516-6mumsrsfveg11arrboit38ppjjk947or.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
