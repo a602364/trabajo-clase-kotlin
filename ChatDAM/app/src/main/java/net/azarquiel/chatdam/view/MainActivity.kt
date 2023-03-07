@@ -23,6 +23,9 @@ import net.azarquiel.chatdam.R
 import net.azarquiel.chatdam.adapter.ChatAdapter
 import net.azarquiel.chatdam.databinding.ActivityMainBinding
 import net.azarquiel.chatdam.model.Mensaje
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,28 +61,16 @@ class MainActivity : AppCompatActivity() {
                 itemEliminarDeslizar(mensaje)
                 Snackbar.make(
                     binding.cmChat.rvPost,
-                    mensaje.msg,
+                    "Se ha eliminado el mensaje ${mensaje.msg}",
                     Snackbar.LENGTH_LONG
-                ).setAction("Undo") {
-                    mensajesAL.add(mensaje)
-                    adapter.setMensajes(mensajesAL)
-                }.show()
+                ).show()
             }
         }).attachToRecyclerView(binding.cmChat.rvPost)
+
     }
 
     private fun itemEliminarDeslizar(mensaje: Mensaje) {
-        db.collection("mensajes")
-            .whereEqualTo("mensaje", mensaje.msg) // Busca el documento por el mensaje
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    document.reference.delete() // Elimina el documento
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents: ", exception)
-            }
+        deleteData(mensaje)
         mensajesAL.remove(mensaje)
         adapter.setMensajes(mensajesAL)
     }
@@ -111,6 +102,7 @@ class MainActivity : AppCompatActivity() {
     private fun addData(mensaje : Mensaje) {
         val msg: MutableMap<String, Any> = HashMap() // diccionario key value
         msg["mensaje"] = mensaje.msg
+        msg["id"] = mensaje.id
         db.collection("mensajes")
             .add(msg)
             .addOnSuccessListener(OnSuccessListener<DocumentReference> { documentReference ->
@@ -120,6 +112,21 @@ class MainActivity : AppCompatActivity() {
                 Log.w("Firebase2022","Error adding document", e)
             })
     }
+
+    private fun deleteData(mensaje: Mensaje) {
+        db.collection("mensajes")
+            .whereEqualTo("mensaje", mensaje.id)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    document.reference.delete()
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w("Firebase2022", "Error deleting documents: ", exception)
+            }
+    }
+
 
     private fun setListener() {
         db.collection("mensajes").addSnapshotListener { snapshot, e ->
@@ -147,7 +154,8 @@ class MainActivity : AppCompatActivity() {
         builder.setView(dialogLayout)
         builder.setPositiveButton("Enviar Mensaje") { dialog, which ->
             val msg = msgEditText.text.toString()
-            addData(Mensaje(msg))
+                val id = UUID.randomUUID().toString()
+            addData(Mensaje(msg,id))
         }
         builder.setNegativeButton("Cancelar") { dialog, which ->
             // Aquí puedes hacer algo si el usuario cancela
@@ -160,7 +168,8 @@ class MainActivity : AppCompatActivity() {
         mensajesAL.clear()
         documents.forEach { d ->
             val msg = d["mensaje"] as String
-            mensajesAL.add(Mensaje(msg))
+            val id = d["id"] as String
+            mensajesAL.add(Mensaje(msg, id))
         }
     }
 
